@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Chandni ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+ <div class="predict">
+	<h1>Predicting insurance charge</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    
+        <p>Age</p>
+        <input type="text" name="age" placeholder="age 18 or over" required="required" />
+        <br></br>
+        
+        <p>Sex</p>
+        <select id="sex" class="select" name="sex" placeholder="sex" required="required">
+        <option value="0">Female</option>
+        <option value="1">Male</option>
+        </select>
+        <br></br>
+
+        <p>Children</p>
+        <input type="text" name="children" placeholder="children" required="required" />
+        <br></br>
+ 
+        <p>BMI</p>
+        <input type="text" name="bmi" placeholder="bmi" required="required" />
+        <br></br>
+
+
+        <p>Smoker</p>
+        <select id="smoker" class="select" name="smoker" placeholder="smoker" required="required">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+        </select>
+        <br></br>
+
+        <p>region</p>
+        <select id="region" class="select" name="region" placeholder="region" required="required">
+        <option value="3">South West</option>
+        <option value="2">South East</option>
+        <option value="1">North West</option>
+        <option value="0">North East</option>
+        </select>
+
+        <br></br> 
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
